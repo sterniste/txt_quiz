@@ -10,4 +10,4 @@ CMakeCache.txt
 CTestTestfile.cmake
 cmake_install.cmake
 
-Doxygen
+Doxyfile
