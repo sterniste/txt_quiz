@@ -1,0 +1,14 @@
+Language: Cpp
+BasedOnStyle: Google
+IndentWidth: 2
+ColumnLimit: 999
+UseTab: Never
+NamespaceIndentation: None
+ConstructorInitializerIndentWidth: 2
+AlwaysBreakAfterDefinitionReturnType: TopLevel
+PointerAlignment: Left
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: true
