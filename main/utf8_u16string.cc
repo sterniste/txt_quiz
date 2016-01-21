@@ -34,16 +34,16 @@ widen(string::const_iterator cit, const string::const_iterator cend) {
 
 pair<u16string, unsigned int>
 widen(const string& s) {
-	u16string u16s;
+  u16string u16s;
   const string::const_iterator cend = s.end();
   string::const_iterator cit = s.begin();
-	do {
+  do {
     const auto widened = widen(cit, cend);
     if (widened.first == bad_u16_char)
       return pair<u16string, unsigned int>(u16s, cit - s.begin());
     u16s.push_back(widened.first);
     cit += widened.second;
-	} while (cit != cend);
+  } while (cit != cend);
   return pair<u16string, unsigned int>(u16s, cit - s.begin());
 }
 
@@ -51,20 +51,19 @@ pair<string, unsigned int>
 narrow(const u16string& u16s) {
   string s;
   const u16string::const_iterator cend = u16s.end();
-	for (u16string::const_iterator cit = u16s.begin(); cit != cend; ++cit) {
-		if (*cit <= 0x7f)
-			s.push_back(static_cast<char>(*cit));
-		else if (*cit <= 0x7ff) {
-			s.push_back(0xc0 | ((*cit >> 6) & 0x1f));
-			s.push_back(0x80 | (*cit & 0x3f));
-		} else if (*cit < 0xd800 || *cit > 0xdfff) {
-			s.push_back(0xe0 | ((*cit >> 12) & 0x0f));
-			s.push_back(0x80 | ((*cit >> 6) & 0x3f));
-			s.push_back(0x80 | (*cit & 0x3f));
+  for (u16string::const_iterator cit = u16s.begin(); cit != cend; ++cit) {
+    if (*cit <= 0x7f)
+      s.push_back(static_cast<char>(*cit));
+    else if (*cit <= 0x7ff) {
+      s.push_back(0xc0 | ((*cit >> 6) & 0x1f));
+      s.push_back(0x80 | (*cit & 0x3f));
+    } else if (*cit < 0xd800 || *cit > 0xdfff) {
+      s.push_back(0xe0 | ((*cit >> 12) & 0x0f));
+      s.push_back(0x80 | ((*cit >> 6) & 0x3f));
+      s.push_back(0x80 | (*cit & 0x3f));
     } else
       return pair<string, unsigned int>(s, cit - u16s.begin());
-	}
+  }
   return pair<string, unsigned int>(s, cend - u16s.begin());
 }
 }
-

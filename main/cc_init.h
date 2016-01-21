@@ -3,8 +3,8 @@
 
 #include <string>
 
-const std::string &get_esd_path();
+const std::string& get_esd_path();
 
-void set_esd_path(const char *utf8);
+void set_esd_path(const char* utf8);
 
 #endif

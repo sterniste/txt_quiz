@@ -5,6 +5,6 @@
 #include <memory>
 #include <string>
 
-std::unique_ptr<std::istream> read_esd_file(const std::string &rel_path);
+std::unique_ptr<std::istream> read_esd_file(const std::string& rel_path);
 
 #endif

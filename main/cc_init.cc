@@ -49,7 +49,7 @@ main() {
     assert(widened.first.size() == 1 && widened.second == 1);
   }
   {
-    const u16string u16s {'a', 0xd800};
+    const u16string u16s{'a', 0xd800};
     const auto narrowed = narrow(u16s);
     assert(narrowed.first.size() == 1 && narrowed.second == 1);
   }
@@ -63,6 +63,3 @@ main() {
   }
 }
 #endif
-
-
-

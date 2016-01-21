@@ -1,5 +1,5 @@
 Language: Cpp
-BasedOnStyle: Google
+BasedOnStyle: Chromium
 IndentWidth: 2
 ColumnLimit: 999
 UseTab: Never
@@ -12,3 +12,4 @@ AllowShortLoopsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: true
+
