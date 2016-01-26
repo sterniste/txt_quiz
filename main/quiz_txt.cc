@@ -18,7 +18,7 @@ guess_text_vars::guess_text_vars(const vector<uwstring>& answer_vars) {
   for (const auto& answer_var : answer_vars)
     push_back(guess_text_var{answer_var});
 #ifndef NDEBUG
-  validate();
+  validate(true);
 #endif
 }
 
@@ -33,7 +33,7 @@ guess_text_vars::validate(bool local) const {
 }
 #endif
 
-quiz_question::quiz_question(const vector<uwstring>& answer_vars) : text_vars{new guess_text_vars{answer_vars}}, pos_var{} {
+quiz_question::quiz_question(const vector<uwstring>& answer_vars) : text_vars{new guess_text_vars{answer_vars}}, pos_var{0, 0} {
 #ifndef NDEBUG
   validate(true);
 #endif

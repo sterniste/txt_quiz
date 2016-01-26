@@ -11,13 +11,12 @@ using uwchar = char16_t;
 using uwstring = std::u16string;
 
 class guess_text_var : public uwstring {
-  using seq_off = unsigned short int;
-  std::vector<seq_off> seq_offs;
+  std::vector<unsigned int> seq_offs;
   unsigned int seq_pos;
   bool front_solved;
 
  public:
-  guess_text_var(const uwstring& text) : uwstring{text}, seq_offs{0}, seq_pos{}, front_solved{} {}
+  guess_text_var(const uwstring& text) : uwstring{text}, seq_offs{0}, seq_pos{}, front_solved{} { validate(true); }
 
   uwstring get_seq_str(unsigned int seq) const;
   bool get_seq_solved(unsigned int seq) const;
@@ -43,7 +42,7 @@ struct guess_text_filter {
 
 class quiz_question {
   std::unique_ptr<const guess_text_vars> text_vars;
-  int pos_var;  //
+  int pos_var;
 
  public:
   quiz_question(const std::vector<uwstring>& answer_vars);
@@ -53,7 +52,7 @@ class quiz_question {
   bool move_guess_text_pos(bool move_right, bool wrap = false);
   int get_guess_text_pos() const;
   bool accept_guess_char(uwchar uwc);
-  unsigned int get_pos_var() const { return pos_var >= 0 ? static_cast<unsigned int>(pos_var) : 0; }
+  int get_pos_var() const { return pos_var; }
   void set_pos_var(unsigned int pos_var);
 #ifndef NDEBUG
   void validate(bool local = false) const;

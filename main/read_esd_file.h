@@ -1,5 +1,5 @@
-#ifndef READ_TEXT_FILE_H
-#define READ_TEXT_FILE_H
+#ifndef READ_ESD_FILE_H
+#define READ_ESD_FILE_H
 
 #include <istream>
 #include <memory>
